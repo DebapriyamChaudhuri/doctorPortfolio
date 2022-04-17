@@ -1,0 +1,120 @@
+.heading{
+    width: 100%;
+    padding: 20px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    }
+  .container{
+    width: 450px;
+    padding:  10px;
+    border: 1px solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .container .star-widget input{
+    display: none;
+  }
+  
+  .star-widget label{
+    font-size: 40px;
+    color: #444;
+    padding: 10px;
+    float: right;
+    transition: all 0.2s ease;
+  } 
+  input:not(:checked) ~ label:hover,
+  input:not(:checked)
+   ~ label:hover ~ label{
+    color: #fd4;
+  }
+  input[type="radio"]:checked ~ label{
+    color: #fd4;
+  }
+  input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+  }
+  input#rate-1:checked ~ form header:before{
+    content: "I hate his service";
+  }
+  input#rate-2:checked ~ form header:before{
+    content: "I don't like his service";
+  }
+  input#rate-3:checked ~ form header:before{
+    content: "His service was okay";
+  }
+  input#rate-4:checked ~ form header:before{
+    content: "I like his service";
+  }
+  input#rate-5:checked ~ form header:before{
+    content: "I love his service";
+  }
+  
+  form header{
+    width: 200%;
+    color: #000000;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    margin-left: 190px;
+    transition: all 0.2s ease;
+  }
+  form .textarea {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+  }
+  form .textarea textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid;
+    padding: 10px;
+    font-size: 17px;
+  }
+  
+      .transbox {
+        margin-left: 300px;
+        margin-right: 200px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        background-color: #ffffff;
+        border: 0.5px solid black;
+        opacity: 0.9;
+        padding: 100px;
+        color: #000000;
+        font-weight: bold;
+      }
+      
+  
+    .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 5px ;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;}

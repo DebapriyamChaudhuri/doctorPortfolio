@@ -1,0 +1,129 @@
+
+<style>
+
+.hero{
+  background-image: url("assets/img/bg.jpg") !important;
+  background-size: cover;
+  background-position: center center;
+  
+}
+</style>
+
+<section class="hero is-success is-bold is-fullheight">
+   
+    <div class="hero-body" >
+    <section class="section transbox">
+    <div class="container" style="margin-left:100px; margin-right:100px; margin-top:70px; margin-bottom:100px;">
+      <!-- {{user | json}} -->
+      <!-- {{message}} -->
+    
+    <article class="message is-dark" *ngIf="message" >
+      <div class="message-body">
+        <h2>Hello {{user.name}}, Your appointment has been booked!!!</h2>
+      </div>
+    </article>
+    <article class="message is-dark" *ngIf="notIf" >
+      <div class="message-body">
+        <h2>Time-slot is not available</h2>
+      </div>
+    </article>
+      <form class="columns is-vcentered" name="submit" (ngSubmit)="submitForm()" #appForm="ngForm">
+  
+        
+        <!-- left section -->
+        <div class="column is-8" style="margin-right: 0px; margin-bottom: 75px;">
+        <div class="field">
+          <label class="label">Name</label>
+          <input type="text" name="name" class="input" id="name" value="e.g: David Schwimmer" onfocus="if (this.value=='e.g: David Schwimmer') this.value='';" onblur="if (this.value=='') this.value='e.g: David Schwimmer';" [(ngModel)]="user.name" #nameinput="ngModel" required/>
+          <div class="help-is-error" *ngIf="nameinput.invalid && nameinput.dirty" style="font-size: smaller; font-weight: normal;">Name is required</div>
+  
+  
+  
+          <label class="label">Email-id</label>
+          <input type="email" name="email-id" class="input" id="mail" value="e.g: david@abc.com" onfocus="if (this.value=='e.g: david@abc.com') this.value='';" onblur="if (this.value=='') this.value='e.g: david@abc.com';" [(ngModel)]="user.email" #mailinput="ngModel" required/>
+          <div class="help-is-error" *ngIf="mailinput.invalid && mailinput.dirty" style="font-size: smaller; font-weight: normal;">Email-id is required</div>
+  
+  
+  
+          <label class="label">Phone Number</label>
+          <input type="tel" name="ph" class="input" id="phn" value="987*******" onfocus="if (this.value=='987*******') this.value='';" onblur="if (this.value=='') this.value='987*******';" [(ngModel)]="user.ph" #phinput="ngModel" required/>
+          <div class="help-is-error" *ngIf="phinput.invalid && phinput.dirty" style="font-size: smaller; font-weight: normal;">Phone number is required</div>
+  
+  
+  
+          <label class="label">Age</label>
+          <input type="number" name="age" class="input" id="age" [(ngModel)]="user.age"/>
+  
+  
+  
+          <label class="label">Sex</label>
+          <select name="Sex" class="input" id="sex" value="" [(ngModel)]="user.sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+  
+  
+  
+          <label class="label">Height<div style="font-size: smaller; float:right; margin-right: 300px; margin-top: 2px;">(in cms)</div></label>
+          <input type="number" name="height" class="input" id="height" value="in cms" [(ngModel)]="user.height"/>
+  
+  
+          <label class="label">Weight<div style="font-size: smaller; float:right; margin-right: 300px; margin-top: 2px;">(in Kgs)</div></label>
+          <input type="number" name="weight" class="input" id="weight" value="in kgs" [(ngModel)]="user.weight"/>
+  
+  
+  
+      
+        </div>
+        </div>
+  
+  
+        <!-- right section -->
+        <div class="column" style="float: right; margin-bottom:440px; margin-top: 20px;">
+        <div class="field" >
+          <label class="label">Book a Date</label>
+          <input type="date" name="date" class="input" id="date" value="" [(ngModel)]="user.date" #dateinput="ngModel" required> 
+          <div class="help-is-error" *ngIf="dateinput.invalid && dateinput.dirty" style="font-size: smaller; font-weight: normal;">Date is required</div>
+  
+  
+  
+          <label class="label">Book Time-slot<div style="font-size: smaller; color:dark grey; float:right; margin-left: 10px; margin-right: 0.5px;"></div></label>
+          <div class="columns is-vcentered">
+  
+  
+            <div class="column is-8" style="font-size: smaller; float: left; width:50%; ">
+            <label class="label" style="font-size: small;">From</label>
+            <select name="ftime" class="input" id="ftime" value="" [(ngModel)]="user.ftime" #ftimeinput="ngModel" required>
+              <option value="10:00">10:00</option>
+              <option value="12:00">12:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+            </select>
+            <div class="help-is-error" *ngIf="ftimeinput.invalid && ftimeinput.dirty" style="font-size: smaller; font-weight: normal;">From time is required</div>
+            </div>
+
+
+
+            <div class="column" style="float: right; width:50%; margin-right: 0%;">
+            <label class="label" style="font-size: small;">To</label>
+            <select name="ttime" class="input" id="ttime" value="" [(ngModel)]="user.ttime" #ttimeinput="ngModel" required>
+              <option value="12:00">12:00</option>
+              <option value="14:00">14:00</option>
+              <option value="16:00">16:00</option>
+              <option value="18:00">18:00</option>
+            </select>
+            <div class="help-is-error" *ngIf="ttimeinput.invalid && ttimeinput.dirty" style="font-size: smaller; font-weight: normal;">To time is required</div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </form>
+      <div style="margin-left: 130px;">
+        <button class="button is-link is-outlined has-item-centered" [disabled]="!user.name || !user.ph || !user.ftime || !user.ttime || !user.date || !user.email" type="submit" id="button1" (click)="submitForm()">Book Your Appoinment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="button is-link is-outlined has-item-centered" type="submit" id="button" routerLink="review">Give feedback</button>
+      </div>
+    </div>
+    </section>
+    </div>
+    </section>

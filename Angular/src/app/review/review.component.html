@@ -1,0 +1,38 @@
+
+
+<style>
+
+.hero{
+      background-image: url("assets/img/bg.jpg") !important;
+      background-size: cover;
+      background-position: center center;
+      
+    }
+</style>
+
+
+<section class="hero is-success is-bold is-fullheight">
+    <div class="hero-body" >
+    <section class="section transbox">
+    <!-- form -->
+    <div class="row" *ngIf="showmsg">
+        <div class="col-xs-12 content has-text-centered">
+          <div class="alert alert-success">
+              <h2>Your feedback has been taken, Thank You!!!</h2>
+          </div>
+        </div>
+</div>
+    <div class="heading">Give us feedback</div>
+      <form action="">
+        <header></header>
+        <div>
+          <textarea style=" color: black;" name="review" class="textarea" id="" cols="90" placeholder="Describe your experience" [(ngModel)]="review.rev" #revinput="ngModel" required></textarea>
+        </div>
+        <div style="margin-left: 230px; margin-top: 50px;">
+          <button class="button is-link is-outlined has-item-centered" type="submit" id="button2" (click)="feedForm()">Submit</button>
+        </div>
+      </form>
+    
+    </section>
+    </div>
+    </section>
